@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardBackgroundColor="@color/white"
+    android:layout_marginBottom="14dp"
+    app:cardElevation="2dp"
+    app:cardCornerRadius="10dp"
+    app:contentPadding="10dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_mapm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:text="Mã phiếu"/>
+
+            <TextView
+                android:id="@+id/tv_ng_muon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:text="người mợn"/>
+
+            <TextView
+                android:id="@+id/tv_ten_sach"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:text="tên sách"/>
+
+            <TextView
+                android:id="@+id/tv_ngay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:text="Ngày"/>
+
+            <TextView
+                android:id="@+id/tv_gia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:text="giá mượn"/>
+
+            <TextView
+                android:id="@+id/tv_tt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14dp"
+                android:text="thủ thư tao phieu"/>
+
+            <TextView
+                android:id="@+id/tv_trang_thai"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:text="thủ thư tao phieu"/>
+
+
+
+        </LinearLayout>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_delete"
+            android:id="@+id/img_delete"
+            android:background="@android:color/transparent"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            />
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_update"
+            android:id="@+id/img_update"
+            android:layout_marginEnd="20dp"
+            android:background="@android:color/transparent"
+            android:layout_toStartOf="@id/img_delete"
+            android:layout_centerVertical="true"
+            />
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

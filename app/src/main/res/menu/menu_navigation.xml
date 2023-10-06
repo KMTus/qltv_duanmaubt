@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/pm_navi"
+            android:icon="@drawable/ic_receipt"
+            android:title="@string/phi_u_m_n" />
+        <item
+            android:id="@+id/tls_navi"
+            android:icon="@drawable/ic_category"
+            android:title="@string/th_lo_i_s_ch" />
+        <item
+            android:id="@+id/qls_navi"
+            android:icon="@drawable/ic_book"
+            android:title="@string/qu_n_l_s_ch" />
+        <item
+            android:id="@+id/tv_navi"
+            android:icon="@drawable/ic_group"
+            android:title="@string/th_nh_vi_n" />
+    </group>
+    <item android:title="@string/th_ng_k">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_top10"
+                    android:icon="@drawable/ic_static"
+                    android:title="@string/th_ng_k_top_10_s_ch_m_n" />
+                <item
+                    android:id="@+id/nav_tong"
+                    android:icon="@drawable/ic_static"
+                    android:title="@string/doanh_thu" />
+            </group>
+        </menu>
+    </item>
+    <item android:title="@string/ng_i_d_ng">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_admin"
+                    android:icon="@drawable/ic_group"
+                    android:title="Tạo nhân viên" />
+                <item
+                    android:id="@+id/nav_doimk"
+                    android:icon="@drawable/ic_key"
+                    android:title="@string/i_m_t_kh_u" />
+                <item
+                    android:id="@+id/exit"
+                    android:icon="@drawable/ic_logout"
+                    android:title="@string/ng_xu_t" />
+            </group>
+        </menu>
+    </item>
+</menu>
