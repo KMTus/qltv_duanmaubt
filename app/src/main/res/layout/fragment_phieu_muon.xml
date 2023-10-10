@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/sach"
     tools:context=".views.fragment.QuanLyThanhVieFragment">
 
     <TextView
@@ -14,7 +15,7 @@
         android:layout_marginTop="12dp"
         android:layout_marginEnd="12dp"
         android:text="Danh sách phiếu mượn"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="26sp"
         android:textStyle="bold" />
 
