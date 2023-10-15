@@ -10,7 +10,7 @@ public class SqlHelper extends SQLiteOpenHelper {
 
     private static final String DB_NAME = "Library.db";
 
-    private static final int VER = 1;
+    private static final int VER = 2;
 
     public SqlHelper(@Nullable Context context) {
         super(context, DB_NAME, null, VER);
@@ -27,6 +27,7 @@ public class SqlHelper extends SQLiteOpenHelper {
 
 
         sqLiteDatabase.execSQL(tb_loai_sach);
+
 
         // bảng sách
 

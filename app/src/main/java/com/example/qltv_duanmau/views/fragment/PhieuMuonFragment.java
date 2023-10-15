@@ -9,6 +9,8 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,6 +49,7 @@ public class PhieuMuonFragment extends Fragment {
     private PhieuMuonModels phieuMuonModels;
 
     private List<PhieuMuonModels> list;
+    List<PhieuMuonModels> tempList ;
 
     private PhieuMuonAdapter adapter;
 
@@ -63,6 +66,34 @@ public class PhieuMuonFragment extends Fragment {
         dao = new PhieuMuonDao(getContext());
         phieuMuonModels = new PhieuMuonModels();
         list = dao.getDataPhieuMuon();
+
+        // tim kiem phieu muon
+        // tạo ra list phuc vu tìm kiếm
+        tempList = dao.getDataPhieuMuon();
+
+        binding.edtTK.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                list.clear();
+                for (PhieuMuonModels phieuMuonModels1:tempList){
+                    if (String.valueOf(phieuMuonModels1.getId_phieu()).contains(charSequence.toString())){
+                        list.add(phieuMuonModels1);
+                    }
+
+                }
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
 
         //inti recyclerview
         initRecyclerView();
