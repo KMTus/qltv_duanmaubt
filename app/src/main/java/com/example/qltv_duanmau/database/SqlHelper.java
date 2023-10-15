@@ -10,7 +10,7 @@ public class SqlHelper extends SQLiteOpenHelper {
 
     private static final String DB_NAME = "Library.db";
 
-    private static final int VER = 2;
+    private static final int VER = 3;
 
     public SqlHelper(@Nullable Context context) {
         super(context, DB_NAME, null, VER);
@@ -45,7 +45,8 @@ public class SqlHelper extends SQLiteOpenHelper {
                 "CREATE TABLE thanh_vien (" +
                         "id_thanh_vien INTEGER PRIMARY KEY AUTOINCREMENT," +
                         "ten TEXT NOT NULL," +
-                        "nam_sinh TEXT NOT NULL)";
+                        "nam_sinh TEXT NOT NULL," +
+                        "can_cuoc text not null)";
 
         sqLiteDatabase.execSQL(tb_thanhvien);
 

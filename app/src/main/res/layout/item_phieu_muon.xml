@@ -51,7 +51,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="14dp"
-                android:text="giá mượn"/>
+                android:text="giá mượn"
+                android:inputType="number"/>
 
             <TextView
                 android:id="@+id/tv_tt"

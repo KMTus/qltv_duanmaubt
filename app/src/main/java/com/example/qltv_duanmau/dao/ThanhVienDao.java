@@ -27,6 +27,7 @@ public class ThanhVienDao {
         ContentValues cv = new ContentValues();
         cv.put(ThanhVienModels.COL_TEN, thanhVien.getTenThanhVien());
         cv.put(ThanhVienModels.COL_NAM_SINH, thanhVien.getNamSinh());
+        cv.put(ThanhVienModels.COL_CAN_CUOC, thanhVien.getCanCuoc());
         return sqLiteDatabase.insert(ThanhVienModels.TB_NAME, null, cv);
     }
 
@@ -34,6 +35,7 @@ public class ThanhVienDao {
         ContentValues cv = new ContentValues();
         cv.put(ThanhVienModels.COL_TEN, thanhVien.getTenThanhVien());
         cv.put(ThanhVienModels.COL_NAM_SINH, thanhVien.getNamSinh());
+        cv.put(ThanhVienModels.COL_CAN_CUOC, thanhVien.getCanCuoc());
         return sqLiteDatabase.update(ThanhVienModels.TB_NAME, cv, "id_thanh_vien=?", new String[]{String.valueOf(thanhVien.getIdThanhVien())});
     }
 
@@ -51,6 +53,7 @@ public class ThanhVienDao {
             thanhVienModels.setIdThanhVien(cursor.getInt(cursor.getColumnIndex(ThanhVienModels.COL_ID)));
             thanhVienModels.setTenThanhVien(cursor.getString(cursor.getColumnIndex(ThanhVienModels.COL_TEN)));
             thanhVienModels.setNamSinh(cursor.getString(cursor.getColumnIndex(ThanhVienModels.COL_NAM_SINH)));
+            thanhVienModels.setCanCuoc(cursor.getString(cursor.getColumnIndex(ThanhVienModels.COL_CAN_CUOC)));
             list.add(thanhVienModels);
         }
         return list;

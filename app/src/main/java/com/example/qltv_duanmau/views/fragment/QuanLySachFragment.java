@@ -7,6 +7,8 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +21,7 @@ import com.example.qltv_duanmau.databinding.DiaglogaddSachBinding;
 import com.example.qltv_duanmau.databinding.FragmentQuanLySachBinding;
 import com.example.qltv_duanmau.adapter.SachAdapter;
 import com.example.qltv_duanmau.dao.SachDao;
+import com.example.qltv_duanmau.models.PhieuMuonModels;
 import com.example.qltv_duanmau.models.SachModel;
 
 import java.util.ArrayList;
@@ -27,6 +30,7 @@ import java.util.ArrayList;
 public class QuanLySachFragment extends Fragment {
     FragmentQuanLySachBinding binding;
     ArrayList<SachModel> arrayList;
+    ArrayList<SachModel> templist;
     SachAdapter adapter;
     SachDao dao;
     String TLSach;
@@ -47,6 +51,30 @@ public class QuanLySachFragment extends Fragment {
         binding = FragmentQuanLySachBinding.inflate(inflater, container, false);
         dao = new SachDao(getContext());
 
+        binding.edtTKSach.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                arrayList.clear();
+                for (SachModel sachModel:templist){
+                    if (String.valueOf(sachModel.getTenSach()).contains(charSequence.toString())){
+                        arrayList.add(sachModel);
+                    }
+
+                }
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
         loadDataFromSQL();
         listener();
 
@@ -55,6 +83,7 @@ public class QuanLySachFragment extends Fragment {
 
     private void  loadDataFromSQL() {
         arrayList = dao.getListSach();
+        templist = dao.getListSach();
         Log.e("TAG", "loadDataFromSQL: "+ arrayList.size() );
         adapter = new SachAdapter(getContext(), arrayList, dao);
         binding.rcvSach.setAdapter(adapter);

@@ -95,6 +95,7 @@ public class QuanLyThanhVieFragment extends Fragment implements ThanhVienAdapter
         // ánh xạ views
         EditText edt_ten = (EditText) view.findViewById(R.id.edt_ten);
         EditText edt_nam_sinh = (EditText) view.findViewById(R.id.edt_nam_sinh);
+        EditText edt_can_cuoc = view.findViewById(R.id.edt_can_cuoc);
 
         TextView tv_title = (TextView) view.findViewById(R.id.text_title);
 
@@ -104,8 +105,9 @@ public class QuanLyThanhVieFragment extends Fragment implements ThanhVienAdapter
             public void onClick(DialogInterface dialogInterface, int i) {
                 String ten = edt_ten.getText().toString();
                 String nam_sinh = edt_nam_sinh.getText().toString();
+                String can_cuoc = edt_can_cuoc.getText().toString();
 
-                if (ten.isEmpty() || nam_sinh.isEmpty()) {
+                if (ten.isEmpty() || nam_sinh.isEmpty() || can_cuoc.isEmpty()) {
                     Toast.makeText(requireContext(), "Không để trống !", Toast.LENGTH_SHORT).show();
                     return;
                 } else {
@@ -113,6 +115,7 @@ public class QuanLyThanhVieFragment extends Fragment implements ThanhVienAdapter
                     ThanhVienModels models = new ThanhVienModels();
                     models.setTenThanhVien(ten);
                     models.setNamSinh(nam_sinh);
+                    models.setCanCuoc(can_cuoc);
 
                     // check tangjg thái khi thêm vào db
                     long result = thanhVienDao.insert(models);
@@ -159,28 +162,28 @@ builder.create().show();
         // ánh xạ views
         EditText edt_ten = (EditText) view.findViewById(R.id.edt_ten);
         EditText edt_nam_sinh = (EditText) view.findViewById(R.id.edt_nam_sinh);
-
+        EditText edt_can_cuoc = view.findViewById(R.id.edt_can_cuoc);
         TextView tv_title = (TextView) view.findViewById(R.id.text_title);
         tv_title.setText("Sửa thông tin");
 
         edt_ten.setText(thanhVienModels.getTenThanhVien());
         edt_nam_sinh.setText(thanhVienModels.getNamSinh());
-
+        edt_can_cuoc.setText(thanhVienModels.getCanCuoc());
         builder.setPositiveButton("Tạo", new DialogInterface.OnClickListener() {
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 String ten = edt_ten.getText().toString();
                 String nam_sinh = edt_nam_sinh.getText().toString();
-
-                if (ten.isEmpty() || nam_sinh.isEmpty()) {
+                String can_cuoc = edt_can_cuoc.getText().toString();
+                if (ten.isEmpty() || nam_sinh.isEmpty()||can_cuoc.isEmpty()) {
                     Toast.makeText(requireContext(), "Không để trống !", Toast.LENGTH_SHORT).show();
                     return;
                 } else {
                     // thêm vào db
                     thanhVienModels.setTenThanhVien(ten);
                     thanhVienModels.setNamSinh(nam_sinh);
-
+    thanhVienModels.setCanCuoc(can_cuoc);
                     // check tangjg thái khi thêm vào db
                     long result = thanhVienDao.updateThanhVien(thanhVienModels);
 

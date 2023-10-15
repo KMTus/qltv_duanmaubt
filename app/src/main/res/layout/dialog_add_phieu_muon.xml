@@ -68,7 +68,8 @@
         android:text="Nhập giá tiền"
         android:textSize="12sp"
         android:layout_gravity="start"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:inputType="number"/>
 
     <EditText
         android:id="@+id/edt_gia_tien"

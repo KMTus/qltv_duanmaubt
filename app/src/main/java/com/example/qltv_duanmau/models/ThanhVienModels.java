@@ -5,11 +5,13 @@ public class ThanhVienModels {
     private String tenThanhVien;
 
     private String namSinh;
+    private String CanCuoc;
 
-    public ThanhVienModels(int idThanhVien, String tenThanhVien, String namSinh) {
+    public ThanhVienModels(int idThanhVien, String tenThanhVien, String namSinh , String canCuoc) {
         this.idThanhVien = idThanhVien;
         this.tenThanhVien = tenThanhVien;
         this.namSinh = namSinh;
+        this.CanCuoc = canCuoc;
     }
 
     public ThanhVienModels() {
@@ -39,10 +41,19 @@ public class ThanhVienModels {
         this.namSinh = namSinh;
     }
 
+    public String getCanCuoc() {
+        return CanCuoc;
+    }
+
+    public void setCanCuoc(String canCuoc) {
+        CanCuoc = canCuoc;
+    }
+
     public static final String TB_NAME = "thanh_vien";
 
     public static final String COL_ID = "id_thanh_vien";
     public static final String COL_TEN = "ten";
 
     public static final String COL_NAM_SINH = "nam_sinh";
+    public static final  String COL_CAN_CUOC = "can_cuoc";
 }

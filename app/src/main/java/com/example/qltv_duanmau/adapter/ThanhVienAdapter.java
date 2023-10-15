@@ -44,6 +44,7 @@ public class ThanhVienAdapter extends RecyclerView.Adapter<ThanhVienAdapter.View
         ThanhVienModels models = thanhVienModelsList.get(position);
         holder.binding.tvName.setText("Họ và tên : "+models.getTenThanhVien());
         holder.binding.tvNamSinh.setText("Năm sinh : "+models.getNamSinh());
+        holder.binding.tvCanCuoc.setText("Căn cước : " +models.getCanCuoc());
         holder.binding.buttonDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
