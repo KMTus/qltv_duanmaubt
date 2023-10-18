@@ -24,6 +24,14 @@ public class SachDao {
         ArrayList<SachModel> list = new ArrayList<>();
         SQLiteDatabase database = dbHelper.getReadableDatabase();
         database.beginTransaction();
+//      String tb_sach =
+//                "CREATE TABLE sach (" +
+//                        "id_sach INTEGER PRIMARY KEY AUTOINCREMENT," +
+//                        "ten_sach TEXT NOT NULL," +
+//                        "gia_thue INTEGER," +
+//                        "ten_the_loai INTEGER," +
+//                        "nam_suat_ban INTEGER ," +
+//                        "id_the_loai_sach INTEGER REFERENCES loai_sach(id_loai_sach))";  // Chỉnh "INTERGER" thành "INTEGER"
         try {
             Cursor c = database.rawQuery("select * from sach",null);
             if (c.getCount() > 0){
@@ -34,7 +42,8 @@ public class SachDao {
                             c.getString(1),
                             c.getInt(2),
                             c.getString(3),
-                            c.getInt(4)));
+                            c.getInt(4),
+                            c.getInt(5)));
                 }while (c.moveToNext());
                 database.setTransactionSuccessful();
             }
@@ -48,7 +57,7 @@ public class SachDao {
 
     public SachModel getId(String id) {
 
-        String sql = "SELECT * FROM sach WHERE id_sach=?";
+        String sql = "SELECT * FROM sach WHERE id_sach=?id";
         List<SachModel> list = getData(sql, id);
         return list.get(0);
     }
@@ -66,9 +75,10 @@ public class SachDao {
                 String tenSach = cursor.getString(cursor.getColumnIndex("ten_sach"));
                 int giaThue = cursor.getInt(cursor.getColumnIndex("gia_thue"));
                 String tenTL = cursor.getString(cursor.getColumnIndex("ten_the_loai"));
+                int namxb = cursor.getInt(cursor.getColumnIndex("nam_suat_ban"));
                 int idTL = cursor.getInt(cursor.getColumnIndex("id_the_loai_sach"));
 
-                SachModel sach = new SachModel(id, tenSach, giaThue, tenTL, idTL);
+                SachModel sach = new SachModel(id, tenSach, giaThue, tenTL , namxb, idTL);
                 sachList.add(sach);
             } while (cursor.moveToNext());
         }
@@ -91,6 +101,7 @@ public class SachDao {
         values.put("ten_sach", sachModel.getTenSach());
         values.put("gia_thue", sachModel.getGiaThue());
         values.put("ten_the_loai", sachModel.getTenTL());
+        values.put("nam_suat_ban",sachModel.getNam_xuat_ban());
         values.put("id_the_loai_sach", sachModel.getIdTL());
 
 
@@ -165,6 +176,7 @@ public class SachDao {
         values.put("ten_sach", sachModel.getTenSach());
         values.put("gia_thue", sachModel.getGiaThue());
         values.put("ten_the_loai", sachModel.getTenTL());
+        values.put("nam_suat_ban",sachModel.getNam_xuat_ban());
         values.put("id_the_loai_sach", sachModel.getIdTL());
 
         int check = database.update("sach", values, "id_sach = ?", new String[]{String.valueOf(sachModel.getId())});

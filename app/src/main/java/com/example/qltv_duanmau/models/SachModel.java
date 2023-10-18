@@ -5,14 +5,24 @@ public class SachModel {
     private String tenSach;
     private int giaThue;
     private String tenTL;
+    private int nam_xuat_ban;
     private int idTL;
 
-    public SachModel(int id, String tenSach, int giaThue, String tenTL, int idTL) {
+    public SachModel(int id, String tenSach, int giaThue, String tenTL , int nam_xuat_ban, int idTL) {
         this.id = id;
         this.tenSach = tenSach;
         this.giaThue = giaThue;
         this.tenTL = tenTL;
+        this.nam_xuat_ban = nam_xuat_ban;
         this.idTL = idTL;
+    }
+
+    public int getNam_xuat_ban() {
+        return nam_xuat_ban;
+    }
+
+    public void setNam_xuat_ban(int nam_xuat_ban) {
+        this.nam_xuat_ban = nam_xuat_ban;
     }
 
     public SachModel() {

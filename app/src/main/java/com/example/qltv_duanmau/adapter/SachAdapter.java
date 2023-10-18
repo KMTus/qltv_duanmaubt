@@ -48,6 +48,7 @@ public class SachAdapter extends RecyclerView.Adapter<SachAdapter.ViewHolder> {
         holder.binding.tvTenSach.setText("Tên sách: "+obj.getTenSach());
         holder.binding.tvGia.setText("Giá: " + obj.getGiaThue());
         holder.binding.tvLoaiSach.setText("Tên thể loại: " + obj.getTenTL());
+        holder.binding.tvNamxb.setText("năm xuất bản: " + obj.getNam_xuat_ban());
 
         holder.binding.btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -153,9 +154,10 @@ public class SachAdapter extends RecyclerView.Adapter<SachAdapter.ViewHolder> {
             public void onClick(View v) {
                 String tenSach = binding1.edTenSach.getText().toString().trim();
                 String gia = binding1.edGia.getText().toString().trim();
+                String nam = binding1.edNamxb.getText().toString().trim();
 
 
-                if (TLSach.isEmpty() || tenSach.isEmpty() || gia.isEmpty()) {
+                if (TLSach.isEmpty() || tenSach.isEmpty() || gia.isEmpty()||nam.isEmpty()) {
                     Toast.makeText(context, "Vui lòng nhập đữ liệu", Toast.LENGTH_SHORT).show();
 
                     return;
@@ -165,6 +167,7 @@ public class SachAdapter extends RecyclerView.Adapter<SachAdapter.ViewHolder> {
                     objUpdate.setId(objUpdate.getId());
                     objUpdate.setTenSach(tenSach);
                     objUpdate.setGiaThue(Integer.parseInt(gia));
+                    objUpdate.setNam_xuat_ban(Integer.parseInt(nam));
                     objUpdate.setTenTL(TLSach);
                     objUpdate.setIdTL(idTL);
 

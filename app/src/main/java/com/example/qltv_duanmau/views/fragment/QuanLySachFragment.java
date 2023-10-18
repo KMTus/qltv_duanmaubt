@@ -3,6 +3,7 @@ package com.example.qltv_duanmau.views.fragment;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.nfc.Tag;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -25,6 +26,7 @@ import com.example.qltv_duanmau.models.PhieuMuonModels;
 import com.example.qltv_duanmau.models.SachModel;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
 
 public class QuanLySachFragment extends Fragment {
@@ -35,6 +37,8 @@ public class QuanLySachFragment extends Fragment {
     SachDao dao;
     String TLSach;
     int idTL;
+
+    private static final String TAG = QuanLySachFragment.class.getSimpleName();
 
 
 
@@ -51,6 +55,22 @@ public class QuanLySachFragment extends Fragment {
         binding = FragmentQuanLySachBinding.inflate(inflater, container, false);
         dao = new SachDao(getContext());
 
+        binding.btnsxAZ.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                arrayList.sort(Comparator.comparing(SachModel::getTenSach));
+                Toast.makeText(getContext(), "DONE", Toast.LENGTH_SHORT).show();
+                adapter.notifyDataSetChanged();
+            }
+        });
+        binding.btnsxZA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                arrayList.sort(Comparator.comparing(SachModel::getTenSach,Comparator.reverseOrder()));
+                Toast.makeText(getContext(), "DONE", Toast.LENGTH_SHORT).show();
+                adapter.notifyDataSetChanged();
+            }
+        });
         binding.edtTKSach.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -87,6 +107,7 @@ public class QuanLySachFragment extends Fragment {
         Log.e("TAG", "loadDataFromSQL: "+ arrayList.size() );
         adapter = new SachAdapter(getContext(), arrayList, dao);
         binding.rcvSach.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
     }
 
     private void listener() {
@@ -94,7 +115,7 @@ public class QuanLySachFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                LayoutInflater inflater = ((Activity) getContext()).getLayoutInflater();
+                LayoutInflater inflater = (getActivity().getLayoutInflater());
                 DiaglogaddSachBinding binding1 = DiaglogaddSachBinding.inflate(inflater);
                 View view = binding1.getRoot();
                 builder.setView(view);
@@ -125,9 +146,11 @@ public class QuanLySachFragment extends Fragment {
                     public void onClick(View v) {
                         String tenSach = binding1.edTenSach.getText().toString().trim();
                         String gia = binding1.edGia.getText().toString().trim();
+                        String nam = binding1.edNamxb.getText().toString().trim();
 
+                        Log.e(TAG,nam +"");
 
-                        if (TLSach.isEmpty() || tenSach.isEmpty() || gia.isEmpty()) {
+                        if (TLSach.isEmpty() || tenSach.isEmpty() || gia.isEmpty()||nam.isEmpty()) {
                             Toast.makeText(getContext(), "Vui lòng nhập đữ liệu", Toast.LENGTH_SHORT).show();
 
                             return;
@@ -138,6 +161,7 @@ public class QuanLySachFragment extends Fragment {
                             objNew.setTenSach(tenSach);
                             objNew.setGiaThue(Integer.parseInt(gia));
                             objNew.setTenTL(TLSach);
+                            objNew.setNam_xuat_ban(Integer.parseInt(nam));
                             objNew.setIdTL(idTL);
 
                             dao.addSach(objNew);
@@ -145,6 +169,7 @@ public class QuanLySachFragment extends Fragment {
 
                             loadDataFromSQL();
                             Toast.makeText(getContext(), "Thêm mới thành công", Toast.LENGTH_SHORT).show();
+
                             dialog.dismiss();
                         }
                     }

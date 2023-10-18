@@ -10,7 +10,7 @@ public class SqlHelper extends SQLiteOpenHelper {
 
     private static final String DB_NAME = "Library.db";
 
-    private static final int VER = 3;
+    private static final int VER = 8;
 
     public SqlHelper(@Nullable Context context) {
         super(context, DB_NAME, null, VER);
@@ -37,9 +37,12 @@ public class SqlHelper extends SQLiteOpenHelper {
                         "ten_sach TEXT NOT NULL," +
                         "gia_thue INTEGER," +
                         "ten_the_loai INTEGER," +
+                        "nam_suat_ban INTEGER, "+
                         "id_the_loai_sach INTEGER REFERENCES loai_sach(id_loai_sach))";  // Chỉnh "INTERGER" thành "INTEGER"
 
         sqLiteDatabase.execSQL(tb_sach);
+//         String sachup = "ALTER TABLE sach ADD COLUMN nam_suat_ban INTEGER";
+//         sqLiteDatabase.execSQL(sachup);
 
         String tb_thanhvien =
                 "CREATE TABLE thanh_vien (" +
