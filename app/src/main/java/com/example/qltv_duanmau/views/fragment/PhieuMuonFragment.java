@@ -68,6 +68,7 @@ public class PhieuMuonFragment extends Fragment {
         list = dao.getDataPhieuMuon();
 
         // tim kiem phieu muon
+
         // tạo ra list phuc vu tìm kiếm
         tempList = dao.getDataPhieuMuon();
 

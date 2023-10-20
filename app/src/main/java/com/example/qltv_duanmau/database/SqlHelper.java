@@ -10,7 +10,7 @@ public class SqlHelper extends SQLiteOpenHelper {
 
     private static final String DB_NAME = "Library.db";
 
-    private static final int VER = 8;
+    private static final int VER = 9;
 
     public SqlHelper(@Nullable Context context) {
         super(context, DB_NAME, null, VER);

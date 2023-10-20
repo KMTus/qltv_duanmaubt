@@ -57,7 +57,7 @@ public class SachDao {
 
     public SachModel getId(String id) {
 
-        String sql = "SELECT * FROM sach WHERE id_sach=?id";
+        String sql = "SELECT * FROM sach WHERE id_sach=?";
         List<SachModel> list = getData(sql, id);
         return list.get(0);
     }
